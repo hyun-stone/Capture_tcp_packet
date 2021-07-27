@@ -56,6 +56,7 @@ int main(int argc, char* argv[]){
         if(packet->ip.protocol != 6){
             continue;
         }
+        printf("ip:~~~~%d",packet->ip.des_ip);
         printf("Packet length : %d\n",ip_total_len);
         printf("IP header length : %d\n", ip_header_len);
         printf("TCP header length : %d\n",tcp_header_len);
@@ -66,11 +67,10 @@ int main(int argc, char* argv[]){
         printf("Ehter_type: %04x\n", packet->eth.pkt_type);
         printf("=======================================\n");
 
-        printf("Destination IP : %d.%d.%d.%d\n",packet->tcp.des_port&0xFF, (packet->tcp.des_port>>8)&0xFF, (packet->tcp.des_port>>16)&0xFF, (packet->tcp.des_port>>24)&0xFF);
-        printf("Source IP : %d.%d.%d.%d\n", packet->tcp.src_port&0xFF, (packet->tcp.src_port>>8)&0xFF, (packet->tcp.src_port>>16)&0xFF, (packet->tcp.src_port>>24)&0xFF);
+        printf("Destination IP : %d.%d.%d.%d\n",packet->ip.des_ip&0xFF, (packet->ip.des_ip>>8)&0xFF, (packet->ip.des_ip>>16)&0xFF, (packet->ip.des_ip>>24)&0xFF);
+        printf("Source IP : %d.%d.%d.%d\n", packet->ip.src_ip&0xFF, (packet->ip.src_ip>>8)&0xFF, (packet->ip.src_ip>>16)&0xFF, (packet->ip.src_ip>>24)&0xFF);
         printf("Protocol : %04x\n",packet->ip.protocol);
         printf("=======================================\n");
-
         printf("Destination port : %d\n",ntohs(packet->tcp.des_port));
         printf("Source port : %d\n",ntohs(packet->tcp.src_port));
         printf("=======================================\n");
