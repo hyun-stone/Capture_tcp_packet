@@ -56,7 +56,7 @@ int main(int argc, char* argv[]){
         if(packet->ip.protocol != 6){
             continue;
         }
-        printf("ip:~~~~%d",packet->ip.des_ip);
+
         printf("Packet length : %d\n",ip_total_len);
         printf("IP header length : %d\n", ip_header_len);
         printf("TCP header length : %d\n",tcp_header_len);
